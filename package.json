@@ -4,7 +4,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "dev:all": "concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve --host=192.168.0.15\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names=\"server,queue,vite\""
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",

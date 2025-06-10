@@ -7,6 +7,7 @@ use App\Http\Requests\IndexPatientRequest;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Http\Responses\GlobalResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Exception;
@@ -159,6 +160,28 @@ class PatientController extends Controller
             return GlobalResponse::success(null, 'Patient deleted successfully');
         } catch (Exception $e) {
             return GlobalResponse::error('Failed to delete patient', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get all patients as array, optionally filtered by name (full_name).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllData(Request $request)
+    {
+        $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
+        try {
+            $query = Patient::with(['identity', 'address', 'social']);
+            if ($searchQuery) {
+                $query->whereHas('identity', function($q) use ($searchQuery) {
+                    $q->where('full_name', 'like', "%{$searchQuery}%");
+                });
+            }
+            $data = $query->get()->toArray();
+            return GlobalResponse::success($data, 'List data berhasil diambil');
+        } catch (\Exception $e) {
+            return GlobalResponse::error('Failed to retrieve patients', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

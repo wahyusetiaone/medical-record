@@ -7,6 +7,7 @@ use App\Http\Requests\StorePatientVisitRequest;
 use App\Http\Requests\UpdatePatientVisitRequest;
 use App\Http\Requests\IndexPatientVisitRequest;
 use App\Http\Responses\GlobalResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PatientVisitController extends Controller
@@ -73,6 +74,29 @@ class PatientVisitController extends Controller
             return GlobalResponse::success(null, 'Data berhasil dihapus');
         } catch (\Exception $e) {
             return GlobalResponse::error('Failed to delete patient visit', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get all patient visits as array, optionally filtered by patient name.
+     *
+     * @param string|null $searchQuery
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllData(Request $request)
+    {
+        $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
+        try {
+            $query = PatientVisit::with(['patient.identity','patient.address','patient.social', 'insuranceType', 'visitType', 'treatmentType', 'polyclinic', 'doctor']);
+            if ($searchQuery) {
+                $query->whereHas('patient.identity', function($q) use ($searchQuery) {
+                    $q->where('full_name', 'like', "%{$searchQuery}%");
+                });
+            }
+            $data = $query->get()->toArray();
+            return GlobalResponse::success($data, 'List data berhasil diambil');
+        } catch (\Exception $e) {
+            return GlobalResponse::error('Failed to retrieve patient visits', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -70,4 +70,25 @@ class PolyclinicController extends Controller
             return GlobalResponse::error('Failed to delete polyclinic', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Get all polyclinics as array, optionally filtered by name.
+     *
+     * @param string|null $searchQuery
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllData(Request $request)
+    {
+        $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
+        try {
+            $query = Polyclinic::query();
+            if ($searchQuery) {
+                $query->where('name', 'like', "%{$searchQuery}%");
+            }
+            $data = $query->get()->toArray();
+            return GlobalResponse::success($data, 'List data berhasil diambil');
+        } catch (\Exception $e) {
+            return GlobalResponse::error('Failed to retrieve polyclinics', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -11,12 +11,12 @@ return new class extends Migration
         Schema::create('patient_visits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade');
-            $table->foreignId('insurance_type_id')->constrained('insurance_types')->onDelete('restrict');
-            $table->foreignId('visit_type_id')->constrained('visit_types')->onDelete('restrict');
-            $table->foreignId('treatment_type_id')->constrained('treatment_types')->onDelete('restrict');
-            $table->foreignId('polyclinic_id')->constrained('polyclinics')->onDelete('restrict');
-            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('restrict');
-            $table->date('schedule');
+            $table->foreignId('insurance_type_id')->constrained('insurance_types')->onDelete('restrict')->nullable();
+            $table->foreignId('visit_type_id')->constrained('visit_types')->onDelete('restrict')->nullable();
+            $table->foreignId('treatment_type_id')->constrained('treatment_types')->onDelete('restrict')->nullable();
+            $table->foreignId('polyclinic_id')->constrained('polyclinics')->onDelete('restrict')->nullable();
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('restrict')->nullable();
+            $table->date('schedule')->nullable();
             $table->timestamps();
         });
     }

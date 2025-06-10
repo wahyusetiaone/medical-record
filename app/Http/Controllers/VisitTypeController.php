@@ -70,4 +70,25 @@ class VisitTypeController extends Controller
             return GlobalResponse::error('Failed to delete visit type', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Get all visit types as array, optionally filtered by name.
+     *
+     * @param string|null $searchQuery
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllData(Request $request)
+    {
+        $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
+        try {
+            $query = VisitType::query();
+            if ($searchQuery) {
+                $query->where('name', 'like', "%{$searchQuery}%");
+            }
+            $data = $query->get()->toArray();
+            return GlobalResponse::success($data, 'List data berhasil diambil');
+        } catch (\Exception $e) {
+            return GlobalResponse::error('Failed to retrieve visit types', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }

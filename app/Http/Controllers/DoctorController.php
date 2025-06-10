@@ -72,4 +72,25 @@ class DoctorController extends Controller
             return GlobalResponse::error('Failed to delete doctor', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Get all doctors as array, optionally filtered by name.
+     *
+     * @param string|null $searchQuery
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllData(Request $request)
+    {
+        $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
+        try {
+            $query = Doctor::query();
+            if ($searchQuery) {
+                $query->where('name', 'like', "%{$searchQuery}%");
+            }
+            $data = $query->get()->toArray();
+            return GlobalResponse::success($data, 'List data berhasil diambil');
+        } catch (\Exception $e) {
+            return GlobalResponse::error('Failed to retrieve doctors', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }

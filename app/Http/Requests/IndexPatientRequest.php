@@ -26,7 +26,7 @@ class IndexPatientRequest extends FormRequest
         return [
             'page' => 'nullable|integer|min:1',
             'size' => 'nullable|integer|min:1|max:100',
-            'search' => 'nullable|string|max:255',
+            'searchQuery' => 'nullable|string|max:255',
         ];
     }
 }
