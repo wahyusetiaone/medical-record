@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Pagination\CustomPaginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Helpers\RefactorPaginate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->alias(CustomPaginator::class, LengthAwarePaginator::class);
     }
 
     /**
@@ -22,3 +25,4 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+

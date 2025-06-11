@@ -51,7 +51,7 @@ class PatientController extends Controller
                 });
             }
 
-            $patients = $query->paginate($size, ['*'], 'page', $page);
+            $patients = $query->paginate($size, ['*'], 'page', $page)->asCustomPaginate();
 
             return GlobalResponse::success($patients, 'Patients retrieved successfully');
         } catch (Exception $e) {

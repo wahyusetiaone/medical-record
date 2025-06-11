@@ -27,7 +27,7 @@ class DoctorController extends Controller
                       ->orWhere('phone', 'like', "%{$search}%")
                       ->orWhere('email', 'like', "%{$search}%");
             }
-            $data = $query->paginate($size, ['*'], 'page', $page);
+            $data = $query->paginate($size, ['*'], 'page', $page)->asCustomPaginate();
             return GlobalResponse::success($data, 'List data berhasil diambil');
         } catch (\Exception $e) {
             return GlobalResponse::error('Failed to retrieve doctors', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -94,3 +94,4 @@ class DoctorController extends Controller
         }
     }
 }
+

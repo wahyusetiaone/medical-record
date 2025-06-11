@@ -16,7 +16,9 @@ return new class extends Migration
             $table->foreignId('treatment_type_id')->constrained('treatment_types')->onDelete('restrict')->nullable();
             $table->foreignId('polyclinic_id')->constrained('polyclinics')->onDelete('restrict')->nullable();
             $table->foreignId('doctor_id')->constrained('doctors')->onDelete('restrict')->nullable();
+            $table->foreignId('responsible_person_id')->nullable()->constrained('responsible_people')->onDelete('set null');
             $table->date('schedule')->nullable();
+            $table->string('path_general_concent')->nullable();
             $table->timestamps();
         });
     }
@@ -26,4 +28,3 @@ return new class extends Migration
         Schema::dropIfExists('patient_visits');
     }
 };
-

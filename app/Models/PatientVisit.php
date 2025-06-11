@@ -16,7 +16,9 @@ class PatientVisit extends Model
         'treatment_type_id',
         'polyclinic_id',
         'doctor_id',
+        'responsible_person_id',
         'schedule',
+        'path_general_consent',
     ];
 
     public function patient()
@@ -43,5 +45,8 @@ class PatientVisit extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+    public function responsiblePerson()
+    {
+        return $this->belongsTo(ResponsiblePerson::class);
+    }
 }
-

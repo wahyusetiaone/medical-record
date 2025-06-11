@@ -16,10 +16,15 @@ class Doctor extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'nik',
+        'satu_sehat_id',
         'name',
         'specialty',
+        'address',
+        'city',
         'phone',
-        'email',
+        'str_number',
+        'start_date',
         'is_active',
     ];
 

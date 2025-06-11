@@ -16,8 +16,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('specialty');
             $table->string('phone');
-            $table->string('email')->unique();
             $table->boolean('is_active')->default(true);
+            $table->string('nik');
+            $table->string('satu_sehat_id');
+            $table->string('address');
+            $table->string('city');
+            $table->string('str_number');
+            $table->string('start_date');
             $table->timestamps();
         });
     }

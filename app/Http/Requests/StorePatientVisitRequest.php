@@ -15,13 +15,13 @@ class StorePatientVisitRequest extends FormRequest
     {
         return [
             'patient_id' => 'required|exists:patients,id',
-            'insurance_type_id' => 'exists:insurance_types,id',
-            'visit_type_id' => 'exists:visit_types,id',
-            'treatment_type_id' => 'exists:treatment_types,id',
-            'polyclinic_id' => 'exists:polyclinics,id',
-            'doctor_id' => 'exists:doctors,id',
-            'schedule' => 'date',
+            'insurance_type_id' => 'exists:insurance_types,id|nullable',
+            'visit_type_id' => 'exists:visit_types,id|nullable',
+            'treatment_type_id' => 'exists:treatment_types,id|nullable',
+            'polyclinic_id' => 'exists:polyclinics,id|nullable',
+            'doctor_id' => 'exists:doctors,id|nullable',
+            'schedule' => 'date|nullable',
+            'path_general_consent' => 'string|nullable',
         ];
     }
 }
-

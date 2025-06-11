@@ -28,7 +28,7 @@ class PatientVisitController extends Controller
                     });
                 });
             }
-            $visits = $query->paginate($size, ['*'], 'page', $page);
+            $visits = $query->paginate($size, ['*'], 'page', $page)->asCustomPaginate();
             return GlobalResponse::success($visits, 'List data berhasil diambil');
         } catch (\Exception $e) {
             return GlobalResponse::error('Failed to retrieve patient visits', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);

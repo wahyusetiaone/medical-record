@@ -12,12 +12,16 @@ class DoctorFactory extends Factory
     public function definition(): array
     {
         return [
+            'nik' => $this->faker->nik(),
+            'satu_sehat_id' => $this->faker->uuid(),
             'name' => $this->faker->name(),
             'specialty' => $this->faker->randomElement(['Umum', 'Anak', 'Bedah', 'Gigi', 'Mata']),
+            'address' => $this->faker->address(),
+            'city' => $this->faker->city(),
             'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'str_number' => $this->faker->bothify('STR-####-####'),
+            'start_date' => $this->faker->date('Y-m-d'),
             'is_active' => $this->faker->boolean(90),
         ];
     }
 }
-

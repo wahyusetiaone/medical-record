@@ -21,7 +21,8 @@ class UpdatePatientVisitRequest extends FormRequest
             'polyclinic_id' => 'sometimes|required|exists:polyclinics,id',
             'doctor_id' => 'sometimes|required|exists:doctors,id',
             'schedule' => 'sometimes|required|date',
+            'responsible_person_id' => 'sometimes|required|exists:responsible_people,id',
+            'path_general_consent' => 'string|nullable',
         ];
     }
 }
-

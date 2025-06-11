@@ -19,7 +19,7 @@ class PatientVisitFactory extends Factory
             'polyclinic_id' => null, // Set in seeder
             'doctor_id' => null, // Set in seeder
             'schedule' => $this->faker->date(),
+            'path_general_consent' => $this->faker->optional()->filePath(),
         ];
     }
 }
-
