@@ -54,3 +54,4 @@ class InitialAssessment extends Model
         return $this->belongsTo(RequareAction::class);
     }
 }
+
