@@ -32,14 +32,15 @@ class VisitTypeController extends Controller
         }
     }
 
-    public function store(StoreVisitTypeRequest $request)
+    public function store(Request $request)
     {
-        try {
-            $visitType = VisitType::create($request->validated());
-            return GlobalResponse::success($visitType, 'Data berhasil ditambahkan', Response::HTTP_CREATED);
-        } catch (\Exception $e) {
-            return GlobalResponse::error('Failed to create visit type', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+//        try {
+//            $visitType = VisitType::create($request->validated());
+//            return GlobalResponse::success($visitType, 'Data berhasil ditambahkan', Response::HTTP_CREATED);
+//        } catch (\Exception $e) {
+//            return GlobalResponse::error('Failed to create visit type', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+//        }
+        return GlobalResponse::success($request->all(), 'Logs', Response::HTTP_CREATED);
     }
 
     public function show(VisitType $visitType)
