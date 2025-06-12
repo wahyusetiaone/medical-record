@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('specialty');
             $table->string('phone');
             $table->boolean('is_active')->default(true);
-            $table->string('nik');
-            $table->string('satu_sehat_id');
-            $table->string('address');
+            $table->string('nik', 16);               // Adding nik column
+            $table->string('satu_sehat_id');         // Adding satu_sehat_id column
+            $table->text('address');                 // Changed to text for longer addresses
             $table->string('city');
             $table->string('str_number');
-            $table->string('start_date');
+            $table->date('start_date');              // Changed to date type
             $table->timestamps();
         });
     }
