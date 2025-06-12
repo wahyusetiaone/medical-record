@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('healty_data_id')->nullable()->constrained('healty_data')->onDelete('set null');
             $table->foreignId('physical_measurement_id')->nullable()->constrained('physical_measurements')->onDelete('set null');
             $table->foreignId('functional_data_id')->nullable()->constrained('functional_data')->onDelete('set null');
-            $table->foreignId('psiko_sos_bud_id')->nullable()->constrained('psiko_sos_bud')->onDelete('set null');
+            $table->foreignId('psiko_sos_bud_id')->nullable()->constrained('psiko_sos_buds')->onDelete('set null');
             $table->foreignId('examination_id')->nullable()->constrained('examinations')->onDelete('set null');
             $table->foreignId('requare_action_id')->nullable()->constrained('requare_actions')->onDelete('set null');
             $table->timestamps();

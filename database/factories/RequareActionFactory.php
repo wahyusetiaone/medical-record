@@ -12,10 +12,9 @@ class RequareActionFactory extends Factory
     public function definition(): array
     {
         return [
-            'action_type' => $this->faker->randomElement(['Medication', 'Lab Test', 'Procedure', 'Referral', 'Follow-up']),
-            'description' => $this->faker->text(),
-            'priority' => $this->faker->randomElement(['High', 'Medium', 'Low']),
-            'status' => $this->faker->randomElement(['Pending', 'In Progress', 'Completed']),
+            'polyclinic_by_queue' => $this->faker->boolean(),
+            'prioritized_polyclinic' => $this->faker->boolean(),
+            'igd' => $this->faker->boolean(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

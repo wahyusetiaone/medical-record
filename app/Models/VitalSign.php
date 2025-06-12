@@ -14,6 +14,7 @@ class VitalSign extends Model
         'pulse',
         'systolic',
         'diastolic',
+        'blood_pressure',
         'respiratory_rate',
     ];
 

@@ -11,12 +11,14 @@ class PhysicalMeasurementFactory extends Factory
 
     public function definition(): array
     {
+        $height = $this->faker->numberBetween(150, 190);
+        $weight = $this->faker->numberBetween(45, 120);
+        $bmi = round($weight / pow($height/100, 2), 1);
+
         return [
-            'weight' => $this->faker->randomFloat(1, 45, 120),
-            'height' => $this->faker->randomFloat(1, 150, 190),
-            'bmi' => $this->faker->randomFloat(1, 18.5, 30),
-            'head_circumference' => $this->faker->randomFloat(1, 50, 60),
-            'arm_circumference' => $this->faker->randomFloat(1, 20, 35),
+            'height_cm' => (string)$height,
+            'weight_kg' => (string)$weight,
+            'bmi' => (string)$bmi,
             'created_at' => now(),
             'updated_at' => now(),
         ];

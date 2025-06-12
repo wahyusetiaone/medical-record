@@ -12,9 +12,10 @@ class VitalSignFactory extends Factory
     public function definition(): array
     {
         return [
-            'blood_pressure' => $this->faker->numberBetween(90, 140) . '/' . $this->faker->numberBetween(60, 90),
-            'heart_rate' => $this->faker->numberBetween(60, 100),
-            'respiratory_rate' => $this->faker->numberBetween(12, 20),
+            'respiratory_rate' => $this->faker->numberBetween(90, 140) . '/' . $this->faker->numberBetween(60, 90),
+            'diastolic' => $this->faker->numberBetween(90, 140) . '/' . $this->faker->numberBetween(60, 90),
+            'pulse' => $this->faker->numberBetween(60, 100),
+            'systolic' => $this->faker->numberBetween(12, 20),
             'body_temperature' => $this->faker->randomFloat(1, 36.1, 37.5),
             'created_at' => now(),
             'updated_at' => now(),

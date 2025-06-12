@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('doctor_id')->constrained('doctors')->onDelete('restrict')->nullable();
             $table->foreignId('responsible_person_id')->nullable()->constrained('responsible_people')->onDelete('set null');
             $table->date('schedule')->nullable();
-            $table->string('path_general_concent')->nullable();
+            $table->string('path_general_consent')->nullable();
             $table->timestamps();
         });
     }

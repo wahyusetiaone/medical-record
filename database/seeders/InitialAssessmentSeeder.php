@@ -11,13 +11,34 @@ use App\Models\FunctionalData;
 use App\Models\PsikoSosBud;
 use App\Models\Examination;
 use App\Models\RequareAction;
+use App\Models\Identity;
+use App\Models\Address;
+use App\Models\Social;
 use Illuminate\Database\Seeder;
 
 class InitialAssessmentSeeder extends Seeder
 {
     public function run(): void
     {
-        // Create related data first
+        // Create 10 sets of patient-related data first
+        $patients = collect();
+        for ($i = 0; $i < 10; $i++) {
+            // Create required relations for patient
+            $identity = Identity::factory()->create();
+            $address = Address::factory()->create();
+            $social = Social::factory()->create();
+
+            // Create patient with relations
+            $patient = Patient::create([
+                'identity_id' => $identity->id,
+                'address_id' => $address->id,
+                'social_id' => $social->id,
+            ]);
+
+            $patients->push($patient);
+        }
+
+        // Create related assessment data
         $vitalSigns = VitalSign::factory(10)->create();
         $healtyData = HealtyData::factory(10)->create();
         $physicalMeasurements = PhysicalMeasurement::factory(10)->create();
@@ -25,9 +46,6 @@ class InitialAssessmentSeeder extends Seeder
         $psikoSosBud = PsikoSosBud::factory(10)->create();
         $examinations = Examination::factory(10)->create();
         $requareActions = RequareAction::factory(10)->create();
-
-        // Get existing patients or create new ones
-        $patients = Patient::factory(10)->create();
 
         // Create Initial Assessments
         foreach ($patients as $index => $patient) {

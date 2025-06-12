@@ -12,11 +12,11 @@ return new class extends Migration
             $table->id();
             $table->boolean('is_pregnant_or_breastfeeding')->nullable();
             $table->boolean('smoker_status')->nullable();
-            $table->string('main_complaint')->nullable();
-            $table->string('anamnesis')->nullable();
-            $table->string('disease_history')->nullable();
-            $table->string('drug_allergy_history')->nullable();
-            $table->string('other_allergy_history')->nullable();
+            $table->text('main_complaint')->nullable();
+            $table->text('anamnesis')->nullable();
+            $table->text('disease_history')->nullable();
+            $table->text('drug_allergy_history')->nullable();
+            $table->text('other_allergy_history')->nullable();
             $table->timestamps();
         });
     }

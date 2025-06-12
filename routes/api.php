@@ -82,3 +82,4 @@ Route::middleware([])->group(function () {
     Route::get('responsible-people-all', [ResponsiblePersonController::class, 'getAllData']);
     Route::get('chief-complaints', ChiefComplaintController::class);
 });
+

@@ -12,10 +12,10 @@ class FunctionalDataFactory extends Factory
     public function definition(): array
     {
         return [
-            'activity_level' => $this->faker->randomElement(['Independent', 'Partially Dependent', 'Fully Dependent']),
-            'mobility' => $this->faker->randomElement(['Mobile', 'Limited Mobility', 'Immobile']),
-            'fall_risk' => $this->faker->boolean(),
-            'cognitive_function' => $this->faker->randomElement(['Normal', 'Mild Impairment', 'Moderate Impairment', 'Severe Impairment']),
+            'assistive_device' => $this->faker->boolean(),
+            'physical_disability' => $this->faker->boolean(),
+            'daily_activity' => $this->faker->randomElement(['Independent', 'Need Help', 'Dependent']),
+            'note' => $this->faker->optional()->sentence(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

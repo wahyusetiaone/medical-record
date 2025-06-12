@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('psiko_sos_bud', function (Blueprint $table) {
+        Schema::create('psiko_sos_buds', function (Blueprint $table) {
             $table->id();
             $table->string('psychological')->nullable();
             $table->string('living_with')->nullable();

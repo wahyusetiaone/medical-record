@@ -12,10 +12,13 @@ class HealtyDataFactory extends Factory
     public function definition(): array
     {
         return [
+            'is_pregnant_or_breastfeeding' => $this->faker->boolean(),
+            'smoker_status' => $this->faker->boolean(),
             'main_complaint' => $this->faker->sentence(),
-            'illness_history' => $this->faker->paragraph(),
-            'family_disease_history' => $this->faker->paragraph(),
-            'allergy_history' => $this->faker->optional()->sentence(),
+            'anamnesis' => $this->faker->paragraph(),
+            'disease_history' => $this->faker->paragraph(),
+            'drug_allergy_history' => $this->faker->optional()->sentence(),
+            'other_allergy_history' => $this->faker->optional()->sentence(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

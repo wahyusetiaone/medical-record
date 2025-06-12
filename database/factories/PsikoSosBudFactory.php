@@ -12,10 +12,9 @@ class PsikoSosBudFactory extends Factory
     public function definition(): array
     {
         return [
-            'psychological_condition' => $this->faker->randomElement(['Stable', 'Anxious', 'Depressed', 'Agitated']),
-            'social_support' => $this->faker->randomElement(['Strong', 'Moderate', 'Limited', 'None']),
-            'cultural_considerations' => $this->faker->text(),
-            'spiritual_needs' => $this->faker->optional()->text(),
+            'psychological' => $this->faker->randomElement(['Cooperative', 'Anxious', 'Depressed', 'Aggressive']),
+            'living_with' => $this->faker->randomElement(['Family', 'Alone', 'Caregiver', 'Others']),
+            'daily_language' => $this->faker->randomElement(['Indonesian', 'Javanese', 'Sundanese', 'English', 'Others']),
             'created_at' => now(),
             'updated_at' => now(),
         ];
