@@ -22,7 +22,16 @@ class InitialAssessmentController extends Controller
             if ($search) {
                 // Add search logic if needed
             }
-            $data = $query->paginate($size, ['*'], 'page', $page)->asCustomPaginate();
+            $data = $query->with([
+                'patient',
+                'vitalSign',
+                'healtyData',
+                'physicalMeasurement',
+                'functionalData',
+                'psikoSosBud',
+                'examination',
+                'requareAction'
+            ])->paginate($size, ['*'], 'page', $page)->asCustomPaginate();
             return GlobalResponse::success($data, 'List data berhasil diambil');
         } catch (\Exception $e) {
             return GlobalResponse::error('Failed to retrieve initial assessments', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -43,6 +52,16 @@ class InitialAssessmentController extends Controller
     public function show(InitialAssessment $initialAssessment)
     {
         try {
+            $initialAssessment->load([
+                'patient',
+                'vitalSign',
+                'healtyData',
+                'physicalMeasurement',
+                'functionalData',
+                'psikoSosBud',
+                'examination',
+                'requareAction'
+            ]);
             return GlobalResponse::success($initialAssessment, 'Detail data berhasil diambil');
         } catch (\Exception $e) {
             return GlobalResponse::error('Failed to retrieve initial assessment', $e->getMessage(), Response::HTTP_NOT_FOUND);
@@ -53,6 +72,16 @@ class InitialAssessmentController extends Controller
     {
         try {
             $initialAssessment->update($request->validated());
+            $initialAssessment->load([
+                'patient',
+                'vitalSign',
+                'healtyData',
+                'physicalMeasurement',
+                'functionalData',
+                'psikoSosBud',
+                'examination',
+                'requareAction'
+            ]);
             return GlobalResponse::success($initialAssessment, 'Data berhasil diubah');
         } catch (\Exception $e) {
             return GlobalResponse::error('Failed to update initial assessment', $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -69,4 +98,3 @@ class InitialAssessmentController extends Controller
         }
     }
 }
-
