@@ -12,7 +12,7 @@ class DoctorFactory extends Factory
     public function definition(): array
     {
         return [
-            'nik' => $this->faker->nik(),
+            'nik' => $this->faker->numerify('################'),
             'satu_sehat_id' => $this->faker->uuid(),
             'name' => $this->faker->name(),
             'specialty' => $this->faker->randomElement(['Umum', 'Anak', 'Bedah', 'Gigi', 'Mata']),
