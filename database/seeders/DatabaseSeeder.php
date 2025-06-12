@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             ScheduleSeeder::class,
             PatientVisitSeeder::class,
             ChiefComplaintSeeder::class,
+            InitialAssessmentSeeder::class,
         ]);
     }
 }
+
