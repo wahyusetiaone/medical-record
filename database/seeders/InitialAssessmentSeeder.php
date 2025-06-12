@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\InitialAssessment;
 use App\Models\Patient;
+use App\Models\PatientVisit;
 use App\Models\VitalSign;
 use App\Models\HealtyData;
 use App\Models\PhysicalMeasurement;
@@ -20,23 +21,8 @@ class InitialAssessmentSeeder extends Seeder
 {
     public function run(): void
     {
-        // Create 10 sets of patient-related data first
-        $patients = collect();
-        for ($i = 0; $i < 10; $i++) {
-            // Create required relations for patient
-            $identity = Identity::factory()->create();
-            $address = Address::factory()->create();
-            $social = Social::factory()->create();
-
-            // Create patient with relations
-            $patient = Patient::create([
-                'identity_id' => $identity->id,
-                'address_id' => $address->id,
-                'social_id' => $social->id,
-            ]);
-
-            $patients->push($patient);
-        }
+//        get patient visit id 1 -10
+        $patient_visits = PatientVisit::limit(10)->get();
 
         // Create related assessment data
         $vitalSigns = VitalSign::factory(10)->create();
@@ -48,9 +34,9 @@ class InitialAssessmentSeeder extends Seeder
         $requareActions = RequareAction::factory(10)->create();
 
         // Create Initial Assessments
-        foreach ($patients as $index => $patient) {
+        foreach ($patient_visits as $index => $patient_visit) {
             InitialAssessment::create([
-                'patient_id' => $patient->id,
+                'patient_visit_id' => $patient_visit->id,
                 'vital_sign_id' => $vitalSigns[$index]->id,
                 'healty_data_id' => $healtyData[$index]->id,
                 'physical_measurement_id' => $physicalMeasurements[$index]->id,

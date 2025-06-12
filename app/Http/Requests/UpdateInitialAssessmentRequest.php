@@ -14,7 +14,7 @@ class UpdateInitialAssessmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'patient_id' => 'sometimes|required|exists:patients,id',
+            'patient_visit_id' => 'sometimes|required|exists:patient_visits,id',
             'vital_sign_id' => 'sometimes|nullable|exists:vital_signs,id',
             'healty_data_id' => 'sometimes|nullable|exists:healty_data,id',
             'physical_measurement_id' => 'sometimes|nullable|exists:physical_measurements,id',

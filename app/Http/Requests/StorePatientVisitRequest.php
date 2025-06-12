@@ -14,14 +14,14 @@ class StorePatientVisitRequest extends FormRequest
     public function rules()
     {
         return [
-            'patient_id' => 'required|exists:patients,id',
-            'insurance_type_id' => 'exists:insurance_types,id|nullable',
-            'visit_type_id' => 'exists:visit_types,id|nullable',
-            'treatment_type_id' => 'exists:treatment_types,id|nullable',
-            'polyclinic_id' => 'exists:polyclinics,id|nullable',
-            'doctor_id' => 'exists:doctors,id|nullable',
-            'schedule' => 'date|nullable',
-            'path_general_consent' => 'string|nullable',
+            'patient_id'        => 'required|exists:patients,id',
+            'insurance_type_id' => 'sometimes|nullable|exists:insurance_types,id',
+            'visit_type_id'     => 'sometimes|nullable|exists:visit_types,id',
+            'treatment_type_id' => 'sometimes|nullable|exists:treatment_types,id',
+            'polyclinic_id'     => 'sometimes|nullable|exists:polyclinics,id',
+            'doctor_id'         => 'sometimes|nullable|exists:doctors,id',
+            'schedule'          => 'sometimes|nullable|date',
+            'path_general_consent' => 'sometimes|nullable|string',
         ];
     }
 }

@@ -10,7 +10,7 @@ class InitialAssessment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'patient_id',
+        'patient_visit_id',
         'vital_sign_id',
         'healty_data_id',
         'physical_measurement_id',
@@ -21,9 +21,9 @@ class InitialAssessment extends Model
     ];
 
     // Relationships
-    public function patient()
+    public function patient_visit()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(PatientVisit::class);
     }
     public function vitalSign()
     {

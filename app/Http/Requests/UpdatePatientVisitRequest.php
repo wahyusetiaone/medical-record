@@ -14,15 +14,14 @@ class UpdatePatientVisitRequest extends FormRequest
     public function rules()
     {
         return [
-            'patient_id' => 'sometimes|required|exists:patients,id',
-            'insurance_type_id' => 'sometimes|required|exists:insurance_types,id',
-            'visit_type_id' => 'sometimes|required|exists:visit_types,id',
-            'treatment_type_id' => 'sometimes|required|exists:treatment_types,id',
-            'polyclinic_id' => 'sometimes|required|exists:polyclinics,id',
-            'doctor_id' => 'sometimes|required|exists:doctors,id',
-            'schedule' => 'sometimes|required|date',
-            'responsible_person_id' => 'sometimes|required|exists:responsible_people,id',
-            'path_general_consent' => 'string|nullable',
+            'patient_id'        => 'sometimes|required|exists:patients,id',
+            'insurance_type_id' => 'sometimes|nullable|exists:insurance_types,id',
+            'visit_type_id'     => 'sometimes|nullable|exists:visit_types,id',
+            'treatment_type_id' => 'sometimes|nullable|exists:treatment_types,id',
+            'polyclinic_id'     => 'sometimes|nullable|exists:polyclinics,id',
+            'doctor_id'         => 'sometimes|nullable|exists:doctors,id',
+            'schedule'          => 'sometimes|nullable|date',
+            'path_general_consent' => 'sometimes|nullable|string',
         ];
     }
 }
