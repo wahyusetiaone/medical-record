@@ -17,7 +17,7 @@ class StoreRequareActionRequest extends FormRequest
             'polyclinic_by_queue' => 'required|boolean',
             'prioritized_polyclinic' => 'required|boolean',
             'igd' => 'required|boolean',
-            'patient_id' => 'required|exists:patients,id',
+            'initial_assessment_id' => 'required|exists:initial_assessments,id',
         ];
     }
 }

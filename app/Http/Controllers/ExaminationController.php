@@ -36,11 +36,11 @@ class ExaminationController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
-            $patientId = $validated['patient_id'];
-            $examination = Examination::create(collect($validated)->except('patient_id')->toArray());
-            $patient = \App\Models\Patient::findOrFail($patientId);
-            $patient->examination_id = $examination->id;
-            $patient->save();
+            $patientId = $validated['initial_assessment_id'];
+            $examination = Examination::create(collect($validated)->except('initial_assessment_id')->toArray());
+            $assessment = \App\Models\InitialAssessment::findOrFail($patientId);
+            $assessment->examination_id = $examination->id;
+            $assessment->save();
             DB::commit();
             return GlobalResponse::success($examination, 'Data berhasil ditambahkan', Response::HTTP_CREATED);
         } catch (\Exception $e) {

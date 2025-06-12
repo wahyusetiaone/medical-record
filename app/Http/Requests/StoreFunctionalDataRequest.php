@@ -18,7 +18,7 @@ class StoreFunctionalDataRequest extends FormRequest
             'physical_disability' => 'required|boolean',
             'daily_activity' => 'required|string|max:255',
             'note' => 'required|string|max:255',
-            'patient_id' => 'required|exists:patients,id',
+            'initial_assessment_id' => 'required|exists:initial_assessments,id',
         ];
     }
 }

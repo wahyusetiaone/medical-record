@@ -36,11 +36,11 @@ class PsikoSosBudController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
-            $patientId = $validated['patient_id'];
-            $psikoSosBud = PsikoSosBud::create(collect($validated)->except('patient_id')->toArray());
-            $patient = \App\Models\Patient::findOrFail($patientId);
-            $patient->psiko_sos_bud_id = $psikoSosBud->id;
-            $patient->save();
+            $patientId = $validated['initial_assessment_id'];
+            $psikoSosBud = PsikoSosBud::create(collect($validated)->except('initial_assessment_id')->toArray());
+            $assessment = \App\Models\InitialAssessment::findOrFail($patientId);
+            $assessment->psiko_sos_bud_id = $psikoSosBud->id;
+            $assessment->save();
             DB::commit();
             return GlobalResponse::success($psikoSosBud, 'Data berhasil ditambahkan', Response::HTTP_CREATED);
         } catch (\Exception $e) {

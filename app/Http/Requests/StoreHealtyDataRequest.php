@@ -21,7 +21,7 @@ class StoreHealtyDataRequest extends FormRequest
             'disease_history' => 'required|string|max:255',
             'drug_allergy_history' => 'required|string|max:255',
             'other_allergy_history' => 'required|string|max:255',
-            'patient_id' => 'required|exists:patients,id',
+            'initial_assessment_id' => 'required|exists:initial_assessments,id',
         ];
     }
 }

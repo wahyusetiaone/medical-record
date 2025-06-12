@@ -36,11 +36,11 @@ class PhysicalMeasurementController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
-            $patientId = $validated['patient_id'];
-            $physicalMeasurement = PhysicalMeasurement::create(collect($validated)->except('patient_id')->toArray());
-            $patient = \App\Models\Patient::findOrFail($patientId);
-            $patient->physical_measurement_id = $physicalMeasurement->id;
-            $patient->save();
+            $patientId = $validated['initial_assessment_id'];
+            $physicalMeasurement = PhysicalMeasurement::create(collect($validated)->except('initial_assessment_id')->toArray());
+            $assessment = \App\Models\InitialAssessment::findOrFail($patientId);
+            $assessment->physical_measurement_id = $physicalMeasurement->id;
+            $assessment->save();
             DB::commit();
             return GlobalResponse::success($physicalMeasurement, 'Data berhasil ditambahkan', Response::HTTP_CREATED);
         } catch (\Exception $e) {

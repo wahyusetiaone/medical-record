@@ -20,7 +20,7 @@ class StoreExaminationRequest extends FormRequest
             'fall_risk' => 'required|string|max:255',
             'pain_scale' => 'required|string|max:255',
             'cough' => 'required|string|max:255',
-            'patient_id' => 'required|exists:patients,id',
+            'initial_assessment_id' => 'required|exists:initial_assessments,id',
         ];
     }
 }

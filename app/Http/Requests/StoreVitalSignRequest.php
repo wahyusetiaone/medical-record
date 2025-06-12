@@ -19,7 +19,7 @@ class StoreVitalSignRequest extends FormRequest
             'systolic' => 'required|string|max:10',
             'diastolic' => 'required|string|max:10',
             'respiratory_rate' => 'required|string|max:10',
-            'patient_id' => 'required|exists:patients,id',
+            'initial_assessment_id' => 'required|exists:initial_assessments,id',
         ];
     }
 }

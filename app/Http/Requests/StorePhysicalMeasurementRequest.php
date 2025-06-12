@@ -17,7 +17,7 @@ class StorePhysicalMeasurementRequest extends FormRequest
             'height_cm' => 'required|string|max:10',
             'weight_kg' => 'required|string|max:10',
             'bmi' => 'required|string|max:10',
-            'patient_id' => 'required|exists:patients,id',
+            'initial_assessment_id' => 'required|exists:initial_assessments,id',
         ];
     }
 }

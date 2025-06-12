@@ -31,11 +31,11 @@ class VitalSignController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
-            $patientId = $validated['patient_id'];
-            $vitalSign = VitalSign::create(collect($validated)->except('patient_id')->toArray());
-            $patient = \App\Models\Patient::findOrFail($patientId);
-            $patient->vital_sign_id = $vitalSign->id;
-            $patient->save();
+            $patientId = $validated['initial_assessment_id'];
+            $vitalSign = VitalSign::create(collect($validated)->except('initial_assessment_id')->toArray());
+            $assessment = \App\Models\InitialAssessment::findOrFail($patientId);
+            $assessment->vital_sign_id = $vitalSign->id;
+            $assessment->save();
             DB::commit();
             return GlobalResponse::success($vitalSign, 'Data berhasil ditambahkan', Response::HTTP_CREATED);
         } catch (\Exception $e) {

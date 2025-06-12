@@ -17,7 +17,7 @@ class StorePsikoSosBudRequest extends FormRequest
             'psychological' => 'required|string|max:255',
             'living_with' => 'required|string|max:255',
             'daily_language' => 'required|string|max:255',
-            'patient_id' => 'required|exists:patients,id',
+            'initial_assessment_id' => 'required|exists:initial_assessments,id',
         ];
     }
 }
