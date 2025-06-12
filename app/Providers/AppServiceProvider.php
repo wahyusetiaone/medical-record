@@ -6,6 +6,8 @@ use App\Pagination\CustomPaginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Helpers\RefactorPaginate;
+use App\Models\PatientVisit;
+use App\Observers\PatientVisitObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        PatientVisit::observe(PatientVisitObserver::class);
     }
 }
-
