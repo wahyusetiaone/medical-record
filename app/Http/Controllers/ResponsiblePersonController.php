@@ -39,12 +39,12 @@ class ResponsiblePersonController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
-            $patientId = $request->input('patient_id');
+            $patientId = $request->input('patient_visit_id');
             if (!$patientId) {
-                return GlobalResponse::error('patient_id is required', null, Response::HTTP_UNPROCESSABLE_ENTITY);
+                return GlobalResponse::error('patient_visit_id is required', null, Response::HTTP_UNPROCESSABLE_ENTITY);
             }
-            $responsiblePerson = ResponsiblePerson::create(collect($validated)->except('patient_id')->toArray());
-            $patient = \App\Models\Patient::findOrFail($patientId);
+            $responsiblePerson = ResponsiblePerson::create(collect($validated)->except('patient_visit_id')->toArray());
+            $patient = \App\Models\PatientVisit::findOrFail($patientId);
             $patient->responsible_person_id = $responsiblePerson->id;
             $patient->save();
             DB::commit();

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class ResponsiblePerson extends Model
 {
     use HasFactory;
+    protected $table = 'responsible_people';
 
     protected $fillable = [
         'full_name',
