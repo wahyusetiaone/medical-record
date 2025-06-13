@@ -23,7 +23,8 @@ class InitialAssessmentController extends Controller
                 // Add search logic if needed
             }
             $data = $query->with([
-                'patient_visit',
+                'patient_visit.patient.identity',
+                'patient_visit.responsiblePerson',
                 'vitalSign',
                 'healtyData',
                 'physicalMeasurement',
@@ -53,7 +54,8 @@ class InitialAssessmentController extends Controller
     {
         try {
             $initialAssessment->load([
-                'patient_visit',
+                'patient_visit.patient.identity',
+                'patient_visit.responsiblePerson',
                 'vitalSign',
                 'healtyData',
                 'physicalMeasurement',
@@ -73,7 +75,8 @@ class InitialAssessmentController extends Controller
         try {
             $initialAssessment->update($request->validated());
             $initialAssessment->load([
-                'patient_visit',
+                'patient_visit.patient.identity',
+                'patient_visit.responsiblePerson',
                 'vitalSign',
                 'healtyData',
                 'physicalMeasurement',

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PsikoSosBud extends Model
 {
-    protected $table = 'psiko_sos_buds';
     use HasFactory;
+    protected $table = 'psiko_sos_buds';
 
     protected $fillable = [
         'psychological',
