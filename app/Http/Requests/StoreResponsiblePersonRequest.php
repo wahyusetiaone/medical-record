@@ -21,7 +21,7 @@ class StoreResponsiblePersonRequest extends FormRequest
             'gender' => 'required|string|max:50',
             'phone_number' => 'required|string|max:50',
             'address' => 'required|string|max:255',
-            'patient_id' => 'required|exists:patients,id',
+            'patient_visit_id' => 'required|exists:patient_visits,id',
         ];
     }
 }
