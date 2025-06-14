@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('initial_assessments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('clinic_id')->constrained('clinics');
             $table->foreignId('patient_visit_id')->constrained('patient_visits')->onDelete('cascade');
             $table->foreignId('vital_sign_id')->nullable()->constrained('vital_signs')->onDelete('set null');
             $table->foreignId('healty_data_id')->nullable()->constrained('healty_data')->onDelete('set null');

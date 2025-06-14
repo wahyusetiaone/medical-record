@@ -9,6 +9,7 @@ use App\Http\Requests\IndexScheduleRequest;
 use App\Http\Responses\GlobalResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -21,6 +22,10 @@ class ScheduleController extends Controller
             $search = $validated['search'] ?? null;
 
             $query = Schedule::with(['doctor', 'polyclinic']);
+            $userClinicIds = Auth::user()->getClinicIds();
+            if (!empty($userClinicIds)) {
+                $query->whereIn('clinic_id', $userClinicIds);
+            }
             if ($search) {
                 $query->whereHas('doctor', function($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%");
@@ -82,9 +87,13 @@ class ScheduleController extends Controller
      */
     public function getAllData(Request $request)
     {
+        $clinic_id = $request->has('clinic_id') ? $request->input('clinic_id') : null;
         $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
         try {
             $query = Schedule::with(['doctor', 'polyclinic']);
+            if (!empty($clinic_id)) {
+                $query->where('clinic_id', $clinic_id);
+            }
             if ($searchQuery) {
                 $query->whereHas('doctor', function($q) use ($searchQuery) {
                     $q->where('name', 'like', "%{$searchQuery}%");

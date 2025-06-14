@@ -16,6 +16,7 @@ class Schedule extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'clinic_id',
         'doctor_id',
         'polyclinic_id',
         'day_of_week',

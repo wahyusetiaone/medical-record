@@ -14,6 +14,7 @@ class StoreDoctorRequest extends FormRequest
     public function rules()
     {
         return [
+            'clinic_id' => 'required|exists:clinics,id',
             'nik' => 'required|string|max:255',
             'satu_sehat_id' => 'required|string|max:255',
             'name' => 'required|string|max:255',

@@ -10,6 +10,7 @@ class InitialAssessment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'clinic_id',
         'patient_visit_id',
         'vital_sign_id',
         'healty_data_id',

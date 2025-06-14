@@ -14,6 +14,7 @@ class PatientVisitObserver
 
             if (!$exists) {
                 InitialAssessment::create([
+                    'clinic_id' => $patientVisit->clinic_id,
                     'patient_visit_id' => $patientVisit->id,
                 ]);
             }

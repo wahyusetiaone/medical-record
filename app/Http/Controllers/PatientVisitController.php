@@ -9,6 +9,7 @@ use App\Http\Requests\IndexPatientVisitRequest;
 use App\Http\Responses\GlobalResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class PatientVisitController extends Controller
 {
@@ -21,6 +22,11 @@ class PatientVisitController extends Controller
             $search = $validated['search'] ?? null;
 
             $query = PatientVisit::with(['patient.identity','patient.address','patient.social', 'insuranceType', 'visitType', 'treatmentType', 'polyclinic', 'doctor']);
+
+            $userClinicIds = Auth::user()->getClinicIds();
+            if (!empty($userClinicIds)) {
+                $query->whereIn('clinic_id', $userClinicIds);
+            }
             if ($search) {
                 $query->whereHas('patient', function($q) use ($search) {
                     $q->whereHas('identity', function($q) use ($search) {
@@ -85,9 +91,13 @@ class PatientVisitController extends Controller
      */
     public function getAllData(Request $request)
     {
+        $clinic_id = $request->has('clinic_id') ? $request->input('clinic_id') : null;
         $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
         try {
             $query = PatientVisit::with(['patient.identity','patient.address','patient.social', 'insuranceType', 'visitType', 'treatmentType', 'polyclinic', 'doctor']);
+            if (!empty($clinic_id)) {
+                $query->where('clinic_id', $clinic_id);
+            }
             if ($searchQuery) {
                 $query->whereHas('patient.identity', function($q) use ($searchQuery) {
                     $q->where('full_name', 'like', "%{$searchQuery}%");

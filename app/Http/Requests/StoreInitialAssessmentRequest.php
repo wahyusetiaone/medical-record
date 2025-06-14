@@ -14,6 +14,7 @@ class StoreInitialAssessmentRequest extends FormRequest
     public function rules()
     {
         return [
+            'clinic_id' => 'required|exists:clinics,id',
             'patient_visit_id' => 'required|exists:patient_visits,id',
             // Jika tidak ada di request, validasi untuk kolom tersebut akan dilewati.
             'vital_sign_id' => 'sometimes|nullable|exists:vital_signs,id',

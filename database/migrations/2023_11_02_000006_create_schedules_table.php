@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('clinic_id')->constrained('clinics');
             $table->foreignId('doctor_id')->constrained('doctors');
             $table->foreignId('polyclinic_id')->constrained('polyclinics');
             $table->enum('day_of_week', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']);

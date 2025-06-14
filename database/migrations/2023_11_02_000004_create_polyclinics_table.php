@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('polyclinics', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('clinic_id')->constrained('clinics');
             $table->string('name');
             $table->integer('floor');
             $table->string('room_number');

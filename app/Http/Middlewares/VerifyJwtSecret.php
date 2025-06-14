@@ -2,16 +2,14 @@
 
 namespace App\Http\Middlewares;
 
+use App\Models\JwtUser;
 use Closure;
-use Exception;
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class VerifyJwtSecret
 {
-    private $secret = 'q1w2e3r4t5y6u7i8o9p0asdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@#'; // samain dengan secret Spring kamu
-
     public function handle(Request $request, Closure $next)
     {
         $authHeader = $request->header('Authorization');
@@ -21,16 +19,45 @@ class VerifyJwtSecret
         }
 
         $jwt = $matches[1];
+        $tokenParts = explode('.', $jwt);
+
+        if (count($tokenParts) !== 3) {
+            return response()->json(['error' => 'Invalid JWT format'], 401);
+        }
+
+        $headerPart = $tokenParts[0];
+        $payloadPart = $tokenParts[1];
 
         try {
-            // Decode & verify HS256 JWT dengan secret key
-            $decoded = JWT::decode($jwt, new Key($this->secret, 'RS256'));
+            $decodedHeader = json_decode(base64_decode(strtr($headerPart, '-_', '+/')), false);
+            $decodedPayload = json_decode(base64_decode(strtr($payloadPart, '-_', '+/')), false);
 
-            // Tambahkan klaim ke request agar bisa dipakai controller
-            $request->attributes->add(['jwt_payload' => $decoded]);
+            // --- Mulai Verifikasi Masa Berlaku Token ---
+            $currentTime = time(); // Waktu saat ini dalam Unix timestamp
+
+            // 1. Verifikasi 'iat' (Issued At Time)
+            // Token tidak boleh digunakan sebelum waktu pembuatannya
+            if (isset($decodedPayload->iat) && $currentTime < $decodedPayload->iat) {
+                return response()->json(['error' => 'Token cannot be used before issued time'], 401);
+            }
+
+            // 2. Verifikasi 'exp' (Expiration Time)
+            // Token tidak boleh digunakan setelah waktu kedaluwarsa
+            if (isset($decodedPayload->exp) && $currentTime > $decodedPayload->exp) {
+                return response()->json(['error' => 'Token has expired'], 401);
+            }
+            // --- Akhir Verifikasi Masa Berlaku Token ---
+
+            // TODO::Next need to verify (Ini adalah pengingat untuk verifikasi SIGNATURE!)
+            // Ingat, tanpa verifikasi SIGNATURE, token ini masih bisa dipalsukan.
+            // Klaim exp dan iat yang Anda periksa di sini bisa saja dipalsukan.
+            $request->attributes->add([
+                'jwt_header' => $decodedHeader,
+                'jwt_payload' => $decodedPayload
+            ]);
 
         } catch (Exception $e) {
-            return response()->json(['error' => 'Invalid token: ' . $e->getMessage()], 401);
+            return response()->json(['error' => 'Error decoding or validating token: ' . $e->getMessage()], 401);
         }
 
         return $next($request);

@@ -18,6 +18,8 @@ use App\Http\Controllers\PsikoSosBudController;
 use App\Http\Controllers\ExaminationController;
 use App\Http\Controllers\RequareActionController;
 use App\Http\Controllers\ChiefComplaintController;
+use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\MedicalStaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware([])->group(function () {
+Route::middleware(['api'])->group(function () {
     // Patient API Routes
     Route::apiResource('patients', PatientController::class)->except(['create', 'edit']);
 
@@ -59,6 +61,11 @@ Route::middleware([])->group(function () {
 
     // Responsible Person API Routes
     Route::apiResource('responsible-people', ResponsiblePersonController::class)->except(['create', 'edit']);
+// Clinic API Routes
+    Route::apiResource('clinics', ClinicController::class)->except(['create', 'edit']);
+
+// Medical Staff API Routes
+    Route::apiResource('medical-staff', MedicalStaffController::class)->except(['create', 'edit']);
 
     // Initial Assessment API Routes
     Route::apiResource('initial-assessments', InitialAssessmentController::class)->except(['create', 'edit']);
@@ -81,5 +88,7 @@ Route::middleware([])->group(function () {
     Route::get('visit-types-all', [VisitTypeController::class, 'getAllData']);
     Route::get('responsible-people-all', [ResponsiblePersonController::class, 'getAllData']);
     Route::get('chief-complaints', ChiefComplaintController::class);
+    Route::get('clinics-all', [ClinicController::class, 'getAllData']);
+    Route::get('medical-staff-all', [MedicalStaffController::class, 'getAllData']);
 });
 

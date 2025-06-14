@@ -14,6 +14,7 @@ class StorePatientVisitRequest extends FormRequest
     public function rules()
     {
         return [
+            'clinic_id' => 'required|exists:clinics,id',
             'patient_id'        => 'required|exists:patients,id',
             'insurance_type_id' => 'sometimes|nullable|exists:insurance_types,id',
             'visit_type_id'     => 'sometimes|nullable|exists:visit_types,id',

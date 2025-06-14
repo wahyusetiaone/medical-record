@@ -8,6 +8,7 @@ use App\Http\Requests\StoreInitialAssessmentRequest;
 use App\Http\Requests\UpdateInitialAssessmentRequest;
 use App\Http\Responses\GlobalResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class InitialAssessmentController extends Controller
 {
@@ -19,6 +20,10 @@ class InitialAssessmentController extends Controller
             $size = $validated['size'] ?? 15;
             $search = $validated['search'] ?? null;
             $query = InitialAssessment::query();
+            $userClinicIds = Auth::user()->getClinicIds();
+            if (!empty($userClinicIds)) {
+                $query->whereIn('clinic_id', $userClinicIds);
+            }
             if ($search) {
                 // Add search logic if needed
             }

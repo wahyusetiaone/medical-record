@@ -1,0 +1,1704 @@
+{
+	"info": {
+		"_postman_id": "e1234567-89ab-cdef-0123-456789abcdef",
+		"name": "Medical Record API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Patients",
+			"item": [
+				{
+					"name": "List Patients",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/patients",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Patient",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/patients/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Patient",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/patients"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"date_of_birth\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"phone_number\": \"+1234567890\",\n    \"email\": \"john@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Patient",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/patients/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"date_of_birth\": \"1990-01-01\",\n    \"gender\": \"male\",\n    \"phone_number\": \"+1234567890\",\n    \"email\": \"john@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Patient",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/patients/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Insurance Types",
+			"item": [
+				{
+					"name": "List Insurance Types",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/insurance-types",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Insurance Type",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/insurance-types/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Insurance Type",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/insurance-types"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Private Insurance\",\n    \"description\": \"Private health insurance coverage\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Insurance Type",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/insurance-types/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Private Insurance\",\n    \"description\": \"Private health insurance coverage\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Insurance Type",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/insurance-types/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Visit Types",
+			"item": [
+				{
+					"name": "List Visit Types",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/visit-types",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Visit Type",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/visit-types/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Visit Type",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/visit-types"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Regular Checkup\",\n    \"description\": \"Regular medical checkup\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Visit Type",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/visit-types/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Regular Checkup\",\n    \"description\": \"Regular medical checkup\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Visit Type",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/visit-types/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Treatment Types",
+			"item": [
+				{
+					"name": "List Treatment Types",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/treatment-types",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Treatment Type",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/treatment-types/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Treatment Type",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/treatment-types"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Medication\",\n    \"description\": \"Medical treatment with prescribed medications\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Treatment Type",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/treatment-types/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Medication\",\n    \"description\": \"Medical treatment with prescribed medications\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Treatment Type",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/treatment-types/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Polyclinics",
+			"item": [
+				{
+					"name": "List Polyclinics",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/polyclinics",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Polyclinic",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/polyclinics/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Polyclinic",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/polyclinics"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"General Medicine\",\n    \"description\": \"General medical services\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Polyclinic",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/polyclinics/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"General Medicine\",\n    \"description\": \"General medical services\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Polyclinic",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/polyclinics/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Doctors",
+			"item": [
+				{
+					"name": "List Doctors",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/doctors",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Doctor",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/doctors/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Doctor",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/doctors"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Dr. Jane Smith\",\n    \"specialization\": \"General Medicine\",\n    \"license_number\": \"12345\",\n    \"contact_number\": \"+1234567890\",\n    \"email\": \"jane.smith@hospital.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Doctor",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/doctors/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Dr. Jane Smith\",\n    \"specialization\": \"General Medicine\",\n    \"license_number\": \"12345\",\n    \"contact_number\": \"+1234567890\",\n    \"email\": \"jane.smith@hospital.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Doctor",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/doctors/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Schedules",
+			"item": [
+				{
+					"name": "List Schedules",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/schedules",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Schedule",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/schedules/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Schedule",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/schedules"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"doctor_id\": 1,\n    \"day_of_week\": \"Monday\",\n    \"start_time\": \"09:00\",\n    \"end_time\": \"17:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Schedule",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/schedules/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"doctor_id\": 1,\n    \"day_of_week\": \"Monday\",\n    \"start_time\": \"09:00\",\n    \"end_time\": \"17:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Schedule",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/schedules/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Patient Visits",
+			"item": [
+				{
+					"name": "List Patient Visits",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/patient-visits",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Patient Visit",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/patient-visits/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Patient Visit",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/patient-visits"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_id\": 1,\n    \"doctor_id\": 1,\n    \"visit_date\": \"2023-06-12\",\n    \"visit_time\": \"10:00\",\n    \"visit_type_id\": 1,\n    \"notes\": \"Regular checkup\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Patient Visit",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/patient-visits/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_id\": 1,\n    \"doctor_id\": 1,\n    \"visit_date\": \"2023-06-12\",\n    \"visit_time\": \"10:00\",\n    \"visit_type_id\": 1,\n    \"notes\": \"Regular checkup\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Patient Visit",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/patient-visits/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Responsible People",
+			"item": [
+				{
+					"name": "List Responsible People",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/responsible-people",
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Responsible Person",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/responsible-people/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Responsible Person",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/responsible-people"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_id\": 1,\n    \"name\": \"Jane Doe\",\n    \"relationship\": \"Spouse\",\n    \"phone_number\": \"+1234567890\",\n    \"address\": \"123 Main St\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Responsible Person",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/responsible-people/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_id\": 1,\n    \"name\": \"Jane Doe\",\n    \"relationship\": \"Spouse\",\n    \"phone_number\": \"+1234567890\",\n    \"address\": \"123 Main St\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Responsible Person",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/responsible-people/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Initial Assessment",
+			"item": [
+				{
+					"name": "Assessments",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/initial-assessments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "initial-assessments"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Assessment",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/initial-assessments/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "initial-assessments", ":id"]
+						}
+					}
+				},
+				{
+					"name": "Create Assessment",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/initial-assessments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "initial-assessments"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_id\": 1,\n    \"vital_sign_id\": 1,\n    \"healty_data_id\": 1,\n    \"physical_measurement_id\": 1,\n    \"functional_data_id\": 1,\n    \"psiko_sos_bud_id\": 1,\n    \"examination_id\": 1,\n    \"requare_action_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Assessment",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/initial-assessments/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_id\": 1,\n    \"vital_sign_id\": 1,\n    \"healty_data_id\": 1,\n    \"physical_measurement_id\": 1,\n    \"functional_data_id\": 1,\n    \"psiko_sos_bud_id\": 1,\n    \"examination_id\": 1,\n    \"requare_action_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Assessment",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/initial-assessments/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Vital Signs",
+			"item": [
+				{
+					"name": "List Vital Signs",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/vital-signs",
+							"host": ["{{base_url}}"],
+							"path": ["api", "vital-signs"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Vital Sign",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/vital-signs/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Vital Sign",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/vital-signs"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"blood_pressure\": \"120/80\",\n    \"heart_rate\": 75,\n    \"respiratory_rate\": 16,\n    \"body_temperature\": 36.8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Vital Sign",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/vital-signs/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"blood_pressure\": \"120/80\",\n    \"heart_rate\": 75,\n    \"respiratory_rate\": 16,\n    \"body_temperature\": 36.8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Vital Sign",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/vital-signs/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Health Data",
+			"item": [
+				{
+					"name": "List Health Data",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/healty-data",
+							"host": ["{{base_url}}"],
+							"path": ["api", "healty-data"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Health Data",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/healty-data/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Health Data",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/healty-data"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"main_complaint\": \"Headache and fever\",\n    \"illness_history\": \"Patient reports recurring headaches\",\n    \"family_disease_history\": \"No significant family history\",\n    \"allergy_history\": \"Allergic to penicillin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Health Data",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/healty-data/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"main_complaint\": \"Headache and fever\",\n    \"illness_history\": \"Patient reports recurring headaches\",\n    \"family_disease_history\": \"No significant family history\",\n    \"allergy_history\": \"Allergic to penicillin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Health Data",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/healty-data/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Physical Measurements",
+			"item": [
+				{
+					"name": "List Physical Measurements",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/physical-measurements",
+							"host": ["{{base_url}}"],
+							"path": ["api", "physical-measurements"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Physical Measurement",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/physical-measurements/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Physical Measurement",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/physical-measurements"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weight\": 70.5,\n    \"height\": 175,\n    \"bmi\": 23.0,\n    \"head_circumference\": 56,\n    \"arm_circumference\": 32\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Physical Measurement",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/physical-measurements/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weight\": 70.5,\n    \"height\": 175,\n    \"bmi\": 23.0,\n    \"head_circumference\": 56,\n    \"arm_circumference\": 32\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Physical Measurement",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/physical-measurements/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Functional Data",
+			"item": [
+				{
+					"name": "List Functional Data",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/functional-data",
+							"host": ["{{base_url}}"],
+							"path": ["api", "functional-data"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Functional Data",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/functional-data/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Functional Data",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/functional-data"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activity_level\": \"Independent\",\n    \"mobility\": \"Mobile\",\n    \"fall_risk\": false,\n    \"cognitive_function\": \"Normal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Functional Data",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/functional-data/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activity_level\": \"Independent\",\n    \"mobility\": \"Mobile\",\n    \"fall_risk\": false,\n    \"cognitive_function\": \"Normal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Functional Data",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/functional-data/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Psychosocial Data",
+			"item": [
+				{
+					"name": "List Psychosocial Data",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/psiko-sos-bud",
+							"host": ["{{base_url}}"],
+							"path": ["api", "psiko-sos-bud"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Psychosocial Data",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/psiko-sos-bud/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Psychosocial Data",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/psiko-sos-bud"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"psychological_condition\": \"Stable\",\n    \"social_support\": \"Strong\",\n    \"cultural_considerations\": \"No specific cultural considerations\",\n    \"spiritual_needs\": \"Regular prayer time needed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Psychosocial Data",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/psiko-sos-bud/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"psychological_condition\": \"Stable\",\n    \"social_support\": \"Strong\",\n    \"cultural_considerations\": \"No specific cultural considerations\",\n    \"spiritual_needs\": \"Regular prayer time needed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Psychosocial Data",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/psiko-sos-bud/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Examinations",
+			"item": [
+				{
+					"name": "List Examinations",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/examinations",
+							"host": ["{{base_url}}"],
+							"path": ["api", "examinations"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Examination",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/examinations/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Examination",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/examinations"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"physical_examination\": \"General condition good\",\n    \"laboratory_results\": \"Blood test within normal range\",\n    \"diagnosis\": \"Acute upper respiratory infection\",\n    \"notes\": \"Follow up in 1 week\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Examination",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/examinations/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"physical_examination\": \"General condition good\",\n    \"laboratory_results\": \"Blood test within normal range\",\n    \"diagnosis\": \"Acute upper respiratory infection\",\n    \"notes\": \"Follow up in 1 week\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Examination",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/examinations/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Required Actions",
+			"item": [
+				{
+					"name": "List Required Actions",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/requare-actions",
+							"host": ["{{base_url}}"],
+							"path": ["api", "requare-actions"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Required Action",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/requare-actions/:id"
+						}
+					}
+				},
+				{
+					"name": "Create Required Action",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{base_url}}/api/requare-actions"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action_type\": \"Medication\",\n    \"description\": \"Prescribe antibiotics\",\n    \"priority\": \"High\",\n    \"status\": \"Pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Update Required Action",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{base_url}}/api/requare-actions/:id"
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action_type\": \"Medication\",\n    \"description\": \"Prescribe antibiotics\",\n    \"priority\": \"High\",\n    \"status\": \"Pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					}
+				},
+				{
+					"name": "Delete Required Action",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{base_url}}/api/requare-actions/:id"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Custom getAllData",
+			"item": [
+				{
+					"name": "Get All Doctors",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/doctors-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "doctors-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Insurance Types",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/insurance-types-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "insurance-types-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Patients",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/patients-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Patient Visits",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/patient-visits-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patient-visits-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Polyclinics",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/polyclinics-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "polyclinics-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Schedules",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/schedules-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "schedules-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Treatment Types",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/treatment-types-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "treatment-types-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Visit Types",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/visit-types-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "visit-types-all"]
+						}
+					}
+				},
+				{
+					"name": "Get All Responsible People",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/responsible-people-all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "responsible-people-all"]
+						}
+					}
+				},
+				{
+					"name": "Get Chief Complaints",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/chief-complaints",
+							"host": ["{{base_url}}"],
+							"path": ["api", "chief-complaints"]
+						}
+					}
+				}
+			]
+		},
+        {
+            "name": "Medical Staff",
+            "item": [
+                {
+                    "name": "List Medical Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medical-staff",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "medical-staff"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Medical Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medical-staff/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "medical-staff", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Medical Staff",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Dr. John Doe\",\n  \"specialization\": \"General Practice\",\n  \"license_number\": \"GP123456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/medical-staff",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "medical-staff"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Medical Staff",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Dr. John Doe\",\n  \"specialization\": \"General Practice\",\n  \"license_number\": \"GP123456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/medical-staff/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "medical-staff", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Medical Staff",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medical-staff/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "medical-staff", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Medical Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/medical-staff-all",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "medical-staff-all"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Clinics",
+            "item": [
+                {
+                    "name": "List Clinics",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/clinics",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "clinics"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Clinic",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/clinics/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "clinics", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Clinic",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Main Clinic\",\n  \"address\": \"123 Medical Street\",\n  \"phone\": \"123-456-7890\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/clinics",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "clinics"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Clinic",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Main Clinic Updated\",\n  \"address\": \"123 Medical Street\",\n  \"phone\": \"123-456-7890\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/clinics/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "clinics", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Clinic",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/clinics/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "clinics", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Clinics",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/clinics-all",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "clinics-all"]
+                        }
+                    }
+                }
+            ]
+        }
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		}
+	]
+}

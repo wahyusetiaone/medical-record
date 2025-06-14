@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('insurance_types', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('clinic_id')->constrained('clinics');
             $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);

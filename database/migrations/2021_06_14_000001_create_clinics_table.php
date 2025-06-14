@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('treatment_types', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('clinic_id')->constrained('clinics');
+        Schema::create('clinics', function (Blueprint $table) {
+            $table->integer('id')->primary();
+            $table->foreignId('organization_id')->index();
             $table->string('name');
-            $table->enum('category', ['inpatient', 'outpatient', 'emergency']);
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('treatment_types');
+        Schema::dropIfExists('clinics');
     }
 };

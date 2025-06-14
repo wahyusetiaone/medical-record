@@ -16,6 +16,7 @@ class Polyclinic extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'clinic_id',
         'name',
         'floor',
         'room_number',

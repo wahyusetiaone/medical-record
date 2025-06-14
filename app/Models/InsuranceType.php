@@ -15,6 +15,7 @@ class InsuranceType extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'clinic_id',
         'name',
         'description',
         'is_active',

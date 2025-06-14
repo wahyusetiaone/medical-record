@@ -14,6 +14,7 @@ class StorePolyclinicRequest extends FormRequest
     public function rules()
     {
         return [
+            'clinic_id' => 'required|exists:clinics,id',
             'name' => 'required|string|max:255',
             'floor' => 'required|integer',
             'room_number' => 'required|string|max:255',

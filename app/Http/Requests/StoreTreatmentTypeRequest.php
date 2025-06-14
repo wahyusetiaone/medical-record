@@ -14,6 +14,7 @@ class StoreTreatmentTypeRequest extends FormRequest
     public function rules()
     {
         return [
+            'clinic_id' => 'required|exists:clinics,id',
             'name' => 'required|string|max:255',
             'category' => 'required|in:inpatient,outpatient,emergency',
             'is_active' => 'boolean',

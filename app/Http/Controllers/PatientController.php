@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePatientRequest;
 use App\Http\Responses\GlobalResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
@@ -30,6 +31,10 @@ class PatientController extends Controller
             $search = $validated['search'] ?? null;
 
             $query = Patient::with(['identity', 'address', 'social']);
+            $userClinicIds = Auth::user()->getClinicIds();
+            if (!empty($userClinicIds)) {
+                $query->whereIn('clinic_id', $userClinicIds);
+            }
 
             if ($search) {
                 $query->where(function($q) use ($search) {
@@ -170,9 +175,13 @@ class PatientController extends Controller
      */
     public function getAllData(Request $request)
     {
+        $clinic_id = $request->has('clinic_id') ? $request->input('clinic_id') : null;
         $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
         try {
             $query = Patient::with(['identity', 'address', 'social']);
+            if (!empty($clinic_id)) {
+                $query->where('clinic_id', $clinic_id);
+            }
             if ($searchQuery) {
                 $query->whereHas('identity', function($q) use ($searchQuery) {
                     $q->where('full_name', 'like', "%{$searchQuery}%");

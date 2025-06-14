@@ -9,6 +9,7 @@ use App\Http\Requests\IndexTreatmentTypeRequest;
 use App\Http\Responses\GlobalResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class TreatmentTypeController extends Controller
 {
@@ -21,6 +22,10 @@ class TreatmentTypeController extends Controller
             $search = $validated['search'] ?? null;
 
             $query = TreatmentType::query();
+            $userClinicIds = Auth::user()->getClinicIds();
+            if (!empty($userClinicIds)) {
+                $query->whereIn('clinic_id', $userClinicIds);
+            }
             if ($search) {
                 $query->where('name', 'like', "%{$search}%")
                       ->orWhere('category', 'like', "%{$search}%");
@@ -79,9 +84,13 @@ class TreatmentTypeController extends Controller
      */
     public function getAllData(Request $request)
     {
+        $clinic_id = $request->has('clinic_id') ? $request->input('clinic_id') : null;
         $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
         try {
             $query = TreatmentType::query();
+            if (!empty($clinic_id)) {
+                $query->where('clinic_id', $clinic_id);
+            }
             if ($searchQuery) {
                 $query->where('name', 'like', "%{$searchQuery}%");
             }

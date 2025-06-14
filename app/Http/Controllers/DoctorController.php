@@ -9,6 +9,7 @@ use App\Http\Requests\IndexDoctorRequest;
 use App\Http\Responses\GlobalResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -20,7 +21,12 @@ class DoctorController extends Controller
             $size = $validated['size'] ?? 15;
             $search = $validated['search'] ?? null;
 
+
             $query = Doctor::query();
+            $userClinicIds = Auth::user()->getClinicIds();
+            if (!empty($userClinicIds)) {
+                $query->whereIn('clinic_id', $userClinicIds);
+            }
             if ($search) {
                 $query->where('name', 'like', "%{$search}%")
                       ->orWhere('specialty', 'like', "%{$search}%")
@@ -81,9 +87,13 @@ class DoctorController extends Controller
      */
     public function getAllData(Request $request)
     {
+        $clinic_id = $request->has('clinic_id') ? $request->input('clinic_id') : null;
         $searchQuery = $request->has('searchQuery') ? $request->input('searchQuery') : null;
         try {
             $query = Doctor::query();
+            if (!empty($clinic_id)) {
+                $query->where('clinic_id', $clinic_id);
+            }
             if ($searchQuery) {
                 $query->where('name', 'like', "%{$searchQuery}%");
             }

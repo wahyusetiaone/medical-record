@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('patients', function (Blueprint $table) {
+        Schema::create('medical_staff', function (Blueprint $table) {
             $table->id();
             $table->foreignId('clinic_id')->constrained('clinics');
-            $table->foreignId('identity_id')->constrained('identities');
-            $table->foreignId('address_id')->constrained('addresses');
-            $table->foreignId('social_id')->constrained('socials');
+            $table->string('nama');
+            $table->boolean('is_medical_staff')->default(true);
+            $table->string('division');
+            $table->date('start_date');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('patients');
+        Schema::dropIfExists('medical_staff');
     }
 };

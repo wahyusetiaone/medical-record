@@ -24,6 +24,7 @@ class StorePatientRequest extends FormRequest
     public function rules()
     {
         return [
+            'clinic_id' => 'required|exists:clinics,id',
             // Identity fields
             'identity.full_name' => 'required|string|max:255',
             'identity.phone_number' => 'nullable|string|max:255',

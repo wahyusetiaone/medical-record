@@ -15,6 +15,7 @@ class TreatmentType extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'clinic_id',
         'name',
         'category',
         'is_active',
